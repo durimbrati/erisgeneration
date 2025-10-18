@@ -69,7 +69,7 @@ async function handleLogin() {
 function logout() {
   localStorage.removeItem('loggedInUser');
   localStorage.removeItem('loginTimestamp');
-  localStorage.removeItem('authToken', data.token);
+  localStorage.removeItem('authToken');
   currentUser = '';
   document.getElementById('admin-dashboard').style.display = 'none';
   document.querySelector('.admin-login-container').style.display = 'flex';
