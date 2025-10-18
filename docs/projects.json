@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Commercial site prep",
+    "description": "Rapid ground stabilization, smooth permit pace.",
+    "featured": true,
+    "images": [
+      "1760794152477-ErisGenerationProjects (10).jpeg",
+      "1760794152481-ErisGenerationProjects (38).jpeg",
+      "1760794152487-ErisGenerationProjects (41).jpeg",
+      "1760794814900-ErisGenerationProjects (46).jpeg"
+    ],
+    "lastUpdated": "2025-10-18T13:40:14.918Z",
+    "lastUpdatedBy": "durim"
+  },
+  {
+    "title": "Industrial base prep",
+    "description": "Optimized earthworks plan, reduced mobilization costs.",
+    "featured": true,
+    "images": [
+      "1760794543072-ErisGenerationProjects (24).jpeg",
+      "1760794543080-ErisGenerationProjects (25).jpeg"
+    ],
+    "lastUpdated": "2025-10-18T13:39:43.047Z",
+    "lastUpdatedBy": "durim"
+  },
+  {
+    "title": "Residential foundation",
+    "description": "Depth accuracy, on-time completion, minimal site disruption.",
+    "featured": true,
+    "images": [
+      "foundation.jpeg",
+      "1760794464919-ErisGenerationProjects (27).jpeg",
+      "1760794497819-ErisGenerationProjects (11).jpeg",
+      "1760794497828-ErisGenerationProjects (29).jpeg"
+    ],
+    "lastUpdated": "2025-10-18T13:34:57.836Z",
+    "lastUpdatedBy": "durim"
+  },
+  {
+    "title": "Garden Renovation",
+    "description": "Photo dump from different gardening and drainage projects",
+    "featured": false,
+    "images": [
+      "1760794891039-ErisGenerationProjects (30).jpeg",
+      "1760794891046-ErisGenerationProjects (33).jpeg",
+      "1760794891054-ErisGenerationProjects (34).jpeg",
+      "1760794891061-ErisGenerationProjects (39).jpeg",
+      "1760794891072-ErisGenerationProjects (43).jpeg",
+      "1760794891073-ErisGenerationProjects (47).jpeg",
+      "1760794891076-ErisGenerationProjects (54).jpeg",
+      "1760804997940-ErisGenerationProjects (34).jpeg"
+    ],
+    "lastUpdated": "2025-10-18T16:34:40.973Z",
+    "lastUpdatedBy": "durim"
+  }
+]

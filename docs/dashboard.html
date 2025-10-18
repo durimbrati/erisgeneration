@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Admin Panel – Durim Construction</h1>
+  </header>
+
+  <section>
+    <h3>Upload New Project</h3>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="text" name="title" placeholder="Project Title" required />
+      <textarea name="description" placeholder="Project Description" required></textarea>
+      <input type="file" name="image" accept="image/*" required />
+      <button type="submit">Upload</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Durim Construction Ltd</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Residential foundation",
+    "description": "Depth accuracy, on-time completion, minimal site disruption.",
+    "images": ["foundation.jpeg", "project1_2.jpg", "project1_3.jpg"],
+	"featured": true
+  },
+  {
+    "title": "Commercial site prep",
+    "description": "Rapid ground stabilization, smooth permit pace.",
+    "images": ["commercial.jpg", "project2_2.jpg", "project2_3.jpg"],
+	"featured": true
+  },
+  {
+    "title": "Industrial base prep",
+    "description": "Optimized earthworks plan, reduced mobilization costs.",
+    "images": ["industrialPrep.jpg", "project2_2.jpg", "project2_3.jpg"],
+	"featured": true
+  },
+    {
+    "title": "Garden Renovation",
+    "description": "Landscaped garden with patio and fencing.",
+    "images": ["project2_1.jpg", "project2_2.jpg", "project2_3.jpg"],
+	"featured": false
+  },
+    {
+    "title": "Garden Renovation",
+    "description": "Landscaped garden with patio and fencing.",
+    "images": ["project2_1.jpg", "project2_2.jpg", "project2_3.jpg"],
+	"featured": false
+  },
+    {
+    "title": "Garden Renovation",
+    "description": "Landscaped garden with patio and fencing.",
+    "images": ["project2_1.jpg", "project2_2.jpg", "project2_3.jpg"],
+	"featured": false
+  }
+  
+]
+

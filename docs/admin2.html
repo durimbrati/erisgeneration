@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Admin Login - Eris Generation Ltd</title>
+
+</head>
+
+  <style>
+    /* #admin-dashboard,
+#projects-list,
+.project-item {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #000 !important;
+  background: #fff !important;
+}*/
+    .admin-login-container { max-width: 400px; margin: 5rem auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); } 
+.image-preview-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.thumb-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  flex: 0 0 auto;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.remove-img {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 16px;
+  background: rgba(230, 57, 70, 0.85);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+}
+
+
+
+.remove-img:hover {
+  background: #d62828;
+}
+
+    .admin-login-container h2 { text-align: center; margin-bottom: 1.5rem; }
+    .admin-login-container label { display: block; margin-bottom: 0.5rem; }
+    .admin-login-container input[type="password"] { width: 100%; padding: 0.7rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+    .admin-login-container button { width: 100%; padding: 0.7rem; background: var(--accent-color, #0077b6); color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+    .admin-login-container .error { color: #e63946; text-align: center; margin-bottom: 1rem; }
+    #admin-dashboard { display: none; max-width: 900px; margin: 2rem auto; }
+    #admin-dashboard h2 { text-align: center; margin-bottom: 1.5rem; }
+    #admin-dashboard form { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2rem; }
+    #admin-dashboard label { display: block; margin-bottom: 0.5rem; }
+    #admin-dashboard input[type="text"],
+    #admin-dashboard textarea { width: 100%; padding: 0.7rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+    #admin-dashboard button { padding: 0.7rem 1.5rem; background: var(--accent-color, #0077b6); color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+    #admin-dashboard .project-item { border: 1px solid #ddd; border-radius: 6px; margin-bottom: 1rem; padding: 1rem; background: #fafbfc; }
+    #admin-dashboard .project-item strong { display: block; margin-bottom: 0.5rem; }
+    #admin-dashboard .project-item small { display: block; margin-bottom: 0.5rem; color: #666; }
+    #admin-dashboard .project-item img { height: 40px; border-radius: 4px; margin-right: 0.5rem; }
+    #admin-dashboard #image-preview { display: flex; gap: 0.5rem; margin: 0.5rem 0; }
+  </style>
+</head>
+<body>
+  <div class="admin-login-container" id="admin-login">
+    <h2>Admin Login</h2>
+    <div class="error" id="login-error" style="display:none;"></div>
+    <form id="login-form">
+      <label for="admin-password">Password</label>
+      <input type="password" id="admin-password" required autocomplete="current-password" />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  <div id="admin-dashboard">
+    <h2>Project Management</h2>
+    <form id="project-form">
+      <h3>Add / Edit Project</h3>
+      <input type="hidden" id="edit-index" value="" />
+      <label>Title <input type="text" id="proj-title" required></label>
+      <label>Description <textarea id="proj-desc" required></textarea></label>
+      <label>Images <input type="file" id="proj-images" multiple accept="image/*"></label>
+      <div id="image-preview"></div>
+      <label><input type="checkbox" id="proj-featured"> Featured</label>
+      <button type="submit">Save Project</button>
+      <button type="button" id="cancel-edit" style="display:none;">Cancel Edit</button>
+    </form>
+    <h3>Existing Projects</h3>
+    <div id="projects-list"></div>
+  </div>
+  <script>
+    // Simple hardcoded password for demo
+    const ADMIN_PASSWORD = "eris2025";
+  function showDashboard() {
+  console.log('Showing dashboard...');
+  document.getElementById('admin-login').style.display = 'none';
+  document.getElementById('admin-dashboard').style.display = 'block';
+  loadProjects();
+}
+    function checkAuthAndShowDashboard() {
+      if (sessionStorage.getItem('admin') === '1' && window.location.hash === '#dashboard') {
+        showDashboard();
+      }
+    }
+    // On page load
+    checkAuthAndShowDashboard();
+    // On hash change (e.g. after login)
+    window.addEventListener('hashchange', checkAuthAndShowDashboard);
+    // On successful login, set hash and show dashboard without reload
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pw = document.getElementById('admin-password').value;
+      if (pw === ADMIN_PASSWORD) {
+        sessionStorage.setItem('admin', '1');
+        window.location.hash = 'dashboard';
+        showDashboard();
+      } else {
+        document.getElementById('login-error').textContent = 'Incorrect password.';
+        document.getElementById('login-error').style.display = 'block';
+      }
+    });
+    // --- Project CRUD logic (client-side, demo only) ---
+    let projects = [];
+function loadProjects() {
+  fetch('projects.json')
+    .then(r => {
+         console.log('Fetch status:', r.status);
+      if (!r.ok) throw new Error('Failed to load projects.json');
+      return r.json();
+    })
+    .then(data => {
+         console.log('Loaded data:', data);
+      projects = data;
+      renderProjects();
+    })
+    .catch(err => {
+      const list = document.getElementById('projects-list');
+      list.innerHTML = '<em style="color:#e63946">Could not load projects.json.<br>' + err.message + '</em>';
+    });
+}
+    function renderProjects() {
+      const list = document.getElementById('projects-list');
+      console.log('Rendering projects:', projects);
+      if (!projects.length) { list.innerHTML = '<em>No projects found.</em>'; return; }
+      list.innerHTML = projects.map((p,i) => `
+        <div class='project-item'>
+          <strong>${p.title}</strong> ${p.featured ? '<span style="color:#0077b6;">★</span>' : ''}
+          <small>${p.description}</small>
+          <div style='display:flex;gap:0.5rem;margin:0.5rem 0;'>${(p.images||[]).map(img=>`<img src='uploads/${img}'>`).join('')}</div>
+          <button onclick='editProject(${i})'>Edit</button>
+          <button onclick='deleteProject(${i})' style='color:#fffff;'>Delete</button>
+        </div>
+      `).join('');
+      console.log('list inner html:', list.innerHTML);
+    }
+    window.editProject = function(idx) {
+      const p = projects[idx];
+      document.getElementById('edit-index').value = idx;
+      document.getElementById('proj-title').value = p.title;
+      document.getElementById('proj-desc').value = p.description;
+      document.getElementById('proj-featured').checked = !!p.featured;
+ document.getElementById('image-preview').className = 'image-preview-wrapper';
+document.getElementById('image-preview').innerHTML = (p.images || []).map((img, idx) => `
+  <div class="thumb-wrapper" data-index="${idx}">
+    <img src="uploads/${img}" class="thumb-img" alt="Project Image">
+    <button type="button" class="remove-img" onclick="removeImage(${idx})" title="Remove image">X</button>
+  </div>
+`).join('');
+
+      document.getElementById('cancel-edit').style.display = '';
+      window.scrollTo(0,0);
+    }
+    window.deleteProject = function(idx) {
+      if (!confirm('Delete this project?')) return;
+      projects.splice(idx,1);
+      saveProjects();
+    }
+    window.removeImage = function(idx) {
+  const pIdx = document.getElementById('edit-index').value;
+  if (pIdx !== '') {
+    projects[pIdx].images.splice(idx, 1);
+    editProject(pIdx); // re-render preview
+  }
+}
+
+    console.log(projects.length); // Confirm array is populated
+console.log(document.getElementById('projects-list').innerHTML); // Should show HTML
+
+    document.getElementById('cancel-edit').onclick = function() {
+      document.getElementById('edit-index').value = '';
+      document.getElementById('project-form').reset();
+      document.getElementById('image-preview').innerHTML = '';
+      this.style.display = 'none';
+    }
+    document.getElementById('proj-images').onchange = function(e) {
+      const files = Array.from(e.target.files);
+      const preview = document.getElementById('image-preview');
+      preview.innerHTML = '';
+      files.forEach(f => {
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const img = document.createElement('img');
+          img.src = ev.target.result;
+          img.style.height = '40px';
+          img.style.borderRadius = '4px';
+          preview.appendChild(img);
+        };
+        reader.readAsDataURL(f);
+      });
+    }
+    document.getElementById('project-form').onsubmit = function(e) {
+      e.preventDefault();
+      const idx = document.getElementById('edit-index').value;
+      const title = document.getElementById('proj-title').value.trim();
+      const description = document.getElementById('proj-desc').value.trim();
+      const featured = document.getElementById('proj-featured').checked;
+      // For demo, just use filenames (no real upload)
+      let images = Array.from(document.getElementById('proj-images').files).map(f=>f.name);
+      if (!images.length && idx) images = projects[idx].images;
+      const project = { title, description, images, featured };
+      if (idx) {
+        projects[idx] = project;
+      } else {
+        projects.push(project);
+      }
+      saveProjects();
+      this.reset();
+      document.getElementById('image-preview').innerHTML = '';
+      document.getElementById('cancel-edit').style.display = 'none';
+    }
+    function saveProjects() {
+      // For demo, just update UI. Real save needs backend or serverless function.
+      renderProjects();
+      alert('Project list updated (not saved to server in demo).');
+    }
+   
+  </script>
+</body>
+</html>

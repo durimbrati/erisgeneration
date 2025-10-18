@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Durim Construction Ltd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+ <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo-area">
+      <img src="logo.png" alt="Durim Construction Logo" class="logo" />
+      <h1>Durim Construction Ltd</h1>
+    </div>
+    <nav>
+	  <a href="#top"> Home</a>
+      <a href="#about" >About</a>
+      <a href="#services" >Services</a>
+      <a href="#projects" >Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+	<button id="theme-toggle">Toggle Theme</button>
+	<select id="theme-selector">
+  <option value="default">Light</option>
+  <option value="dark">Dark</option>
+  <option value="blue">Blue</option>
+</select>
+  </header>
+ <a id="top"></a>
+  <section id="hero" class="hero-banner">
+    <div class="overlay">
+      <h2>Reliable. Affordable. Built to Last.</h2>
+      <p>Specialists in extensions, gardening, and general building across London.</p>
+      <a href="#contact" class="cta-button">Get a Free Quote</a>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <h3>About Us</h3>
+    <p>Durim Construction Ltd delivers high-quality residential and commercial work with a focus on transparency, craftsmanship, and customer satisfaction. With over a decade of experience, we bring your vision to life — on time and on budget.</p>
+  </section>
+
+  <section id="services" class="section">
+    <h3>Our Services</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>Extensions</h4>
+        <p>Loft conversions, rear builds, and structural expansions tailored to your needs.</p>
+      </div>
+      <div class="card">
+        <h4>Gardening</h4>
+        <p>Landscaping, turfing, patios, fencing, and garden design for beautiful outdoor spaces.</p>
+      </div>
+      <div class="card">
+        <h4>General Building</h4>
+        <p>Brickwork, plastering, tiling, and full refurbishments with expert craftsmanship.</p>
+      </div>
+    </div>
+  </section>
+
+<section id="projects" class="section">
+  <h3>Past Projects</h3>
+  <div id="gallery" class="cards"></div>
+  <div style="text-align:center; margin-top:2rem;">
+    <a href="projects.html#allprojects" class="cta-button">See More Projects</a>
+  </div>
+</section>
+  <section id="why-us" class="section">
+  <h3>Why Choose Us</h3>
+  <div class="features">
+    <div class="feature">
+      <img src="icons/expertise.svg" alt="Expertise Icon" />
+      <h4>Expertise Across Sectors</h4>
+      <p>From residential to commercial, we deliver tailored results with precision and care.</p>
+    </div>
+    <div class="feature">
+      <img src="icons/design.svg" alt="Design Icon" />
+      <h4>Design-Led Approach</h4>
+      <p>We combine functionality with aesthetics to create spaces that truly stand out.</p>
+    </div>
+    <div class="feature">
+      <img src="icons/value.svg" alt="Value Icon" />
+      <h4>Transparent Value</h4>
+      <p>Competitive pricing, clear communication, and no compromises on quality.</p>
+    </div>
+  </div>
+</section>
+
+<section id="virtual-tour" class="section">
+  <h3>Virtual Tour</h3>
+  <p>Step inside one of our recent projects with a 360° immersive view.</p>
+  <div class="tour-frame">
+    <iframe 
+      src="https://momento360.com/e/u/faa3826c1a98426f8246c7f99a59c08d?utm_campaign=embed&utm_source=other&heading=60.8&pitch=-5.5&field-of-view=75&size=medium&display-plan=true" 
+      width="100%" 
+      height="500" 
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<section id="contact" class="section contact-section">
+  <h3>Contact Us</h3>
+  
+     <div class="contact-container">
+    <!-- Left: Contact Form -->
+    <div class="contact-left">
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <!-- Right: Info + Map -->
+    <div class="contact-right">
+      <div class="contact-info">
+        <p><strong>Address:</strong><br>123 Builder Lane, London, UK</p>
+        <p><strong>Email:</strong> <a href="mailto:info@durimconstruction.co.uk">info@durimconstruction.co.uk</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+447700900123">+44 7700 900123</a></p>
+      </div>
+
+      <div class="social-icons">Follow us on social media!
+        <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/yourpage" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/yourpage" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+
+      <div class="map-container">
+	  <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1983.123456789!2d-0.127758!3d51.507351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b3333333333%3A0xabcdef123456789!2sLondon!5e0!3m2!1sen!2suk!4v1695820000000"
+          width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+        ></iframe>
+       
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- <section id="contact" class="section"> -->
+    <!-- <h3>Contact Us</h3> -->
+    <!-- <form> -->
+      <!-- <input type="text" placeholder="Your Name" required /> -->
+      <!-- <input type="email" placeholder="Your Email" required /> -->
+      <!-- <textarea placeholder="Your Message" required></textarea> -->
+      <!-- <button type="submit">Send</button> -->
+    <!-- </form> -->
+    <!-- <p>Email: info@durimconstruction.co.uk</p> -->
+    <!-- <p>Phone: +44 7700 900123</p> -->
+  <!-- </section> -->
+<footer class="site-footer">
+  <div class="footer-left">
+    <div class="social-icons">
+      <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/yourpage" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://linkedin.com/company/yourpage" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+  <div class="footer-right">
+    <p>&copy; Durim Construction Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script src="script.js"></script>
+<script src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js" type="module"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery',
+    children: 'a',
+    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js')
+  });
+  lightbox.init();
+</script>
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+
+ fetch('/projects.json')
+  .then(res => res.json())
+  .then(data => {
+    const gallery = document.getElementById('gallery');
+    const featuredProjects = data.filter(p => p.featured);
+
+    featuredProjects.forEach((project, index) => {
+      const card = document.createElement('div');
+      card.classList.add('card', 'pswp-gallery');
+      card.id = `project-${index}`;
+
+      const mainLink = document.createElement('a');
+      mainLink.href = '/' + project.images[0];
+      mainLink.setAttribute('data-pswp-width', '1200');
+      mainLink.setAttribute('data-pswp-height', '800');
+      mainLink.target = '_blank';
+      mainLink.innerHTML = `<img src="/${project.images[0]}" alt="${project.title}" />`;
+
+      card.innerHTML = `
+        <h4>${project.title}</h4>
+        <p>${project.description}</p>
+      `;
+      card.appendChild(mainLink);
+
+      for (let i = 1; i < project.images.length; i++) {
+        const hiddenLink = document.createElement('a');
+        hiddenLink.href = '/' + project.images[i];
+        hiddenLink.setAttribute('data-pswp-width', '1200');
+        hiddenLink.setAttribute('data-pswp-height', '800');
+        hiddenLink.style.display = 'none';
+        hiddenLink.target = '_blank';
+        card.appendChild(hiddenLink);
+      }
+
+      gallery.appendChild(card);
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: `#project-${index}`,
+        children: 'a',
+        pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js')
+      });
+      lightbox.init();
+    });
+  });
+
+</script>
+
+<script type="module">
+
+
+</body>
+</html>

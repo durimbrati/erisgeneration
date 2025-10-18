@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lightbox Test</title>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.css" /> -->
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" /> -->
+  
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css" />
+
+
+
+</head>
+<body>
+  <h2>Lightbox2 Test</h2>
+  <p>Click the image below to open the gallery:</p>
+<!-- <div class="pswp-gallery" id="gallery"> -->
+  <!-- <a href="/uploads/project1_1.jpg" -->
+     <!-- data-pswp-width="1200" -->
+     <!-- data-pswp-height="800" -->
+     <!-- target="_blank"> -->
+    <!-- <img src="/uploads/project1_1.jpg" style="width:300px;" /> -->
+  <!-- </a> -->
+  <!-- <a href="/uploads/project1_2.jpg" -->
+     <!-- data-pswp-width="1200" -->
+<!-- data-pswp-height="800" -->
+
+     <!-- style="display:none;" -->
+     <!-- target="_blank"></a> -->
+  <!-- <a href="/uploads/project1_3.jpg" -->
+     <!-- data-pswp-width="1200" -->
+     <!-- data-pswp-height="800" -->
+     <!-- style="display:none;" -->
+     <!-- target="_blank"></a> -->
+<!-- </div> -->
+
+<h2>PhotoSwipe Dynamic Test</h2>
+<div class="pswp-gallery" id="gallery"></div>
+
+<script src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js" type="module"></script>
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery',
+    children: 'a',
+    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js')
+  });
+  lightbox.init();
+</script>
+
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+
+  fetch('/projects.json')
+    .then(res => res.json())
+    .then(data => {
+      const galleryRoot = document.getElementById('gallery');
+
+      data.forEach((project, index) => {
+        const projectDiv = document.createElement('div');
+        projectDiv.classList.add('pswp-gallery');
+        projectDiv.id = `project-${index}`;
+
+        // Add visible thumbnail
+        const mainLink = document.createElement('a');
+        mainLink.href = '/' + project.images[0];
+        mainLink.setAttribute('data-pswp-width', '1100');
+        mainLink.setAttribute('data-pswp-height', '700');
+        mainLink.target = '_blank';
+        mainLink.innerHTML = `<img src="/${project.images[0]}" alt="${project.title}" style="width:300px;" />`;
+        projectDiv.appendChild(mainLink);
+
+        // Add hidden images for navigation
+        for (let i = 1; i < project.images.length; i++) {
+          const hiddenLink = document.createElement('a');
+          hiddenLink.href = '/' + project.images[i];
+          hiddenLink.setAttribute('data-pswp-width', '1100');
+          hiddenLink.setAttribute('data-pswp-height', '700');
+          hiddenLink.style.display = 'none';
+          hiddenLink.target = '_blank';
+          projectDiv.appendChild(hiddenLink);
+        }
+
+        galleryRoot.appendChild(projectDiv);
+
+        // Initialize PhotoSwipe for this project
+        const lightbox = new PhotoSwipeLightbox({
+          gallery: `#project-${index}`,
+          children: 'a',
+          pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js')
+        });
+        lightbox.init();
+      });
+    });
+</script>
+
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script> -->
+
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script> -->
+
+
+<!-- <script> -->
+  <!-- console.log("Lightbox script loaded:", typeof lightbox); -->
+<!-- </script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script> -->
+
+  <!-- <script> -->
+    <!-- lightbox.option({ -->
+      <!-- resizeDuration: 200, -->
+      <!-- wrapAround: true, -->
+      <!-- showImageNumberLabel: true -->
+    <!-- }); -->
+  <!-- </script> -->
+</body>
+</html>
+
+
